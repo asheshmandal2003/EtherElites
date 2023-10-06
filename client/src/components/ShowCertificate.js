@@ -3,6 +3,7 @@ import { Box, Button, Card, Divider, Stack, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import html2canvas from "html2canvas";
 import jspdf from "jspdf";
+import BirthCertificate from "./certificates/BirthCertificate";
 
 function ShowCertificate({ contract }) {
   const [data, setData] = useState(null);
@@ -35,7 +36,7 @@ function ShowCertificate({ contract }) {
       const imgY = 30;
       pdf.addImage(
         imgData,
-        "PNG",
+        "JPG",
         imgX,
         imgY,
         imgWidth * ratio,
@@ -58,7 +59,7 @@ function ShowCertificate({ contract }) {
             mb: 8,
           }}
         >
-          <Card
+          {/* <Card
             component="div"
             ref={ref}
             sx={{
@@ -101,6 +102,18 @@ function ShowCertificate({ contract }) {
                 src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=transaction_hash=${params.txid}|from=${data.issuedFrom}|to=${data.issuedTo}`}
               />
             </Stack>
+          </Card> */}
+          <Card
+            sx={{
+              width: "28rem",
+              display: "flex",
+              flexDirection: "column",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              mt: 5,
+            }}
+          >
+            <Typography variant="h4">Certificate of Birth</Typography>
           </Card>
           <Button variant="contained" onClick={download}>
             Download
